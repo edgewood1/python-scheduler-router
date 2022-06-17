@@ -45,7 +45,6 @@ def createThread():
   thread.daemon = True
   thread.start()
   
-
 if __name__ == "__main__":
   # schedule thread
   createThread()
