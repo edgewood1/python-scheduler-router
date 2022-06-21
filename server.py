@@ -1,12 +1,8 @@
-from operator import truediv
-from flask import Flask, render_template, jsonify, request
-from os.path import exists
+from flask import Flask, render_template, jsonify
 from threading import Thread 
-import json
 import schedule
-import time
 from routes.api import api
-from task import task
+from routes.task import task
  
 # create our flask app
 app = Flask(__name__)
@@ -15,7 +11,7 @@ app = Flask(__name__)
 
 # 1: calls api + renders on template
 @app.route("/")
-def home():  
+def renderApiResponse():  
   api_response = task()
   # let's save it to our sqlite database
   # the value of the key is a string, so we can send it to the template
@@ -23,7 +19,7 @@ def home():
 
 # 2: calls api and logs to browser
 @app.route("/api", methods=["GET", "POST"])
-def home2():
+def displayApiResponse():
   return api()
 
 # 3: dummy route that takes a number, multiplies, and returns result
@@ -46,7 +42,7 @@ def createThread():
   thread.start()
   
 if __name__ == "__main__":
-  # schedule thread
+  # create a thread that runs the scheduler
   createThread()
   # main thread listening to the routes
   app.run()

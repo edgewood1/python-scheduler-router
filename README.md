@@ -1,9 +1,18 @@
 __description__
 
-this app calls an api + displays data in 3 possible ways
+this app 
+- schedules an api call for every minute on the hour
+- allows a user to hit an endpoint that also makes the api call
+
+this app displays the api response in 3 way:
 - it writes to file `data/my.json` (scheduled for every minute)
-- it renders to a template (when user goes to path `http://localhost:5000/`)
-- it writes to the browser (when user goes to `http://localhost:5000/api`)
+- it renders the data to a template (when user goes to path `http://localhost:5000/`)
+- it writes data-key-value to the browser (when user goes to `http://localhost:5000/api`)
+
+__rationale__
+
+- this demos automated and manual api calls
+- useful for tracking an online account
 
 __to start app__
 
